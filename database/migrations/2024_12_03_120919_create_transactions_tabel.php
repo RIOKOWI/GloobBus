@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('bus_id'); 
             $table->unsignedBigInteger('customer_id'); 
             $table->integer('jumlah_tiket'); 
-            $table->enum('tipe_sewa', ['Orang', 'Carter']); 
             $table->decimal('total', 10, 2); 
             $table->date('tanggal_transaksi'); 
             $table->timestamps(); 

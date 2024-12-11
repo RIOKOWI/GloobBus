@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tujuan');
             $table->decimal('harga', 10, 2);
             $table->enum('jenis', ['Ekonomi', 'Bisnis', 'Eksekutif']);
-            $table->time('jadwal_keberangkatan');
+            $table->date('jadwal_keberangkatan')->nullable();
             $table->string('supir');
             $table->timestamps();
         });

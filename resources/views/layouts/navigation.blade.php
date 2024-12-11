@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" /> --}}
-                        <img src="images/GloBus.png" alt="GlooBus" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200">
+                        <img src="{{ asset('images/GloBus.png') }}" alt="GlooBus" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200">
                     </a>
                 </div>
 
@@ -16,14 +16,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('buses.index')" :active="request()->routeIs('buses.index')">
                         {{ __('Bus') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Cust') }}
+                    <x-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.index')">
+                        {{ __('Passenger') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Transaction') }}
+                    <x-nav-link :href="route('transactions.index')" :active="request()->routeIs('transactions.index')">
+                        {{ __('Ticket') }}
                     </x-nav-link>
                 </div>
             </div>
