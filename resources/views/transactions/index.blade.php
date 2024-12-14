@@ -1,17 +1,15 @@
 <x-app-layout>
     <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Transaksi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
-<body>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Daftar Transaksi</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    </head>
+    <body>
         <div class="container mt-5">
-            
-
             <h1 class="text-center mb-4">Daftar Transaksi</h1>
 
             <div class="card shadow-sm">
@@ -22,8 +20,10 @@
                                 <th>ID</th>
                                 <th>Customer</th>
                                 <th>Bus</th>
+                                <th>Harga Satu Tiket</th> 
                                 <th>Jumlah Tiket</th>
                                 <th>Total Harga</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,8 +32,17 @@
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->customer->nama }}</td>
                                     <td>{{ $transaction->bus->nama }}</td>
+                                    <td>{{ number_format($transaction->bus->harga, 0, ',', '.') }}</td> <!-- Harga Satu Tiket -->
                                     <td>{{ $transaction->jumlah_tiket }}</td>
                                     <td>{{ number_format($transaction->total, 0, ',', '.') }}</td>
+                                    <td>
+                                        <!-- Delete Form -->
+                                        <form method="POST" action="{{ route('transaction.destroy', ['transaction' => $transaction]) }}" style="display: inline;">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -43,16 +52,13 @@
 
             <!-- Optional: Add a button to add a new transaction -->
             <div class="mt-4">
-                <a href="{{ route('transactions.create') }}" class="btn btn-primary">
+                <a href="{{ route('transactions.create') }}" class="btn btn-warning">
                     <i class="bi bi-plus-circle"></i> Buat Ticket
                 </a>
             </div>
-
-            
         </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
 </x-app-layout>

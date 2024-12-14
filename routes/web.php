@@ -71,5 +71,6 @@ Route::delete('/customer/{customer}/destroy', [CustomerController::class, 'destr
 Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
 Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
 Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+Route::delete('/transactions/{transaction}/destroy', [TransactionController::class, 'destroy'])->name('transaction.destroy');
 
 require __DIR__.'/auth.php';
